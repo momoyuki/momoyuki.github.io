@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SGO4 IF — คู่มือไทย / English–Thai Guide</title>
+<meta name="description" content="คู่มือ SGO4 Integration Fork ภาษาไทย พร้อมต้นฉบับอังกฤษ ค้นหาและเทียบข้อความได้ ใช้งานออฟไลน์">
+<style>
+:root{--bg:#f5f8f7;--card:#fff;--ink:#153637;--muted:#6e8385;--border:#e2eae9;--accent:#168671;--accbg:#e6f6ef;--panel:#153e40;--shadow:0 7px 23px #113b3210;--font:system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif}
+html[data-theme=dark]{--bg:#0e1b1e;--card:#182b2f;--ink:#eef6f3;--muted:#aec1c2;--border:#2d4549;--accent:#78dfb9;--accbg:#23443e;--panel:#183f3f;--shadow:0 7px 26px #0003}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.85 var(--font)}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}a{color:var(--accent)}.app{display:grid;grid-template-columns:282px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border);background:var(--card);padding:24px 15px;scrollbar-width:thin}.logo{padding:0 10px 23px;display:flex;gap:11px;align-items:center}.mark{width:42px;height:42px;background:var(--panel);color:#b7f4d7;border-radius:13px;display:grid;place-items:center;font-size:24px}.logo strong{display:block;font-size:18px;letter-spacing:.06em;line-height:1.25}.logo small{color:var(--muted);font-size:11px;letter-spacing:.12em}.search{width:100%;padding:12px 13px;margin-bottom:12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--ink);outline:0;font-size:13px}.search:focus{border-color:var(--accent)}.count{font-size:11px;color:var(--muted);padding:4px 10px 12px}.group{margin:5px 0 20px}.groupname{font-weight:800;color:var(--muted);font-size:11px;letter-spacing:.04em;padding:9px 11px 5px}.navbtn{border:0;width:100%;display:flex;gap:10px;text-align:left;background:transparent;color:var(--muted);padding:9px 11px;border-radius:9px;font-size:13px;line-height:1.4}.navbtn .n{opacity:.65;min-width:21px;font-size:11px}.navbtn:hover{background:var(--bg)}.navbtn.active{background:var(--accbg);color:var(--accent);font-weight:750}.sidenote{border-top:1px solid var(--border);margin:18px 10px 0;padding-top:18px;font-size:11px;color:var(--muted)}.sidenote a{text-decoration:none}.mainarea{min-width:0}.top{background:var(--card);height:68px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;gap:10px}.top small{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em}.top strong{display:block;font-size:13px}.topact{display:flex;gap:8px;align-items:center}.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;padding:9px 13px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--ink);line-height:1.25;font-size:12px;font-weight:700}.btn:hover{filter:brightness(.97)}.btn.primary{color:#fff;background:#168671;border-color:#168671}.btn.square{padding:9px 12px}.wrap{max-width:1210px;margin:0 auto;padding:36px 5vw 62px}.hero{position:relative;overflow:hidden;background:var(--panel);color:#f1fff8;border-radius:22px;padding:31px 35px;margin-bottom:31px}body.reading .hero{display:none}.hero:after{content:'';position:absolute;right:-80px;top:-155px;border:1px solid #e7fff02e;width:370px;height:370px;border-radius:50%;box-shadow:0 0 0 46px #d4ffe608,0 0 0 98px #d4ffe608}.hero>*{position:relative;z-index:1}.overline{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:#b3f0d1;font-weight:800}.hero h1{font-size:clamp(26px,4vw,38px);line-height:1.35;margin:12px 0}.hero p{font-size:13px;color:#c5ddd9;max-width:640px;margin:0 0 19px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tags span{padding:5px 10px;border:1px solid #ffffff26;border-radius:99px;color:#d8f2e8;background:#ffffff13;font-size:11px}.heading{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:21px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);font-weight:800}.heading h2{font-size:clamp(22px,3vw,29px);line-height:1.4;margin:4px 0}.subtitle{font-size:12px;color:var(--muted)}.tools{display:flex;gap:8px;flex-wrap:wrap}.seg{display:flex;gap:2px;padding:4px;background:var(--bg);border:1px solid var(--border);border-radius:11px}.seg button{background:transparent;border:0;border-radius:8px;padding:7px 10px;color:var(--muted);font-size:12px;font-weight:700}.seg button.selected{background:var(--card);color:var(--accent);box-shadow:0 1px 6px #1232}.cols{display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:start}.cols.th,.cols.en{grid-template-columns:1fr}.cols.th .card.en,.cols.en .card.th{display:none}.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:25px 27px;box-shadow:var(--shadow);min-width:0}.card.th{border-top:3px solid #59c39b}.card.en{border-top:3px solid #a4bacb}.card-header{border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;margin-bottom:20px;font-size:12px;font-weight:750}.card-header i{font-size:10px;font-style:normal;border-radius:8px;background:var(--accbg);padding:3px 9px;color:var(--accent)}.text{font-size:14px;line-height:1.95;overflow-wrap:anywhere}.card.en .text{font-size:13.5px;line-height:1.8}.text p{margin:0 0 17px}.text p:last-child{margin-bottom:0}.text code{font-size:12px;padding:2px 5px;border-radius:5px;background:var(--bg);border:1px solid var(--border)}.note{background:var(--accbg);border-left:3px solid var(--accent);padding:11px 17px;margin:0 0 18px;border-radius:0 8px 8px 0;font-size:12px}.footnotes{font-size:11px;color:var(--muted);margin-top:17px}.pager{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.homegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.hometile{border:1px solid var(--border);background:var(--card);border-radius:15px;padding:22px;text-align:left;color:var(--ink)}.hometile:hover{border-color:var(--accent);box-shadow:var(--shadow)}.hometile strong{font-size:16px;display:block}.hometile p{font-size:12px;color:var(--muted);margin:7px 0 0}.disclaimer{border:1px solid var(--border);background:var(--card);border-radius:12px;padding:15px 18px;margin-top:18px;color:var(--muted);font-size:12px}.sources{font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:30px;padding-top:20px}.hide{display:none!important}.mobileMenu{display:none}.shade{display:none}.modalshade{position:fixed;inset:0;z-index:30;background:#0b171baa;display:none;align-items:center;justify-content:center;padding:18px}.modalshade.show{display:flex}.modal{width:min(750px,100%);max-height:87vh;overflow-y:auto;border-radius:19px;background:var(--card);padding:24px}.modalheader{display:flex;justify-content:space-between;align-items:center;gap:12px}.modal h2{margin:0 0 5px}.glossgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}.term{border:1px solid var(--border);border-radius:10px;padding:12px}.term b{font-size:13px;color:var(--accent)}.term p{font-size:12px;color:var(--muted);margin:4px 0}.missing{font-size:13px;color:var(--muted);padding:17px}
+@media(max-width:1080px){.cols{grid-template-columns:1fr}.wrap{padding:29px 26px 60px}}
+@media(max-width:750px){.app{display:block}.side{position:fixed;top:0;left:0;z-index:25;width:min(84vw,330px);transform:translateX(-102%);transition:transform .18s}.side.open{transform:translateX(0)}.shade.open{display:block;position:fixed;z-index:24;inset:0;background:#06101388}.mobileMenu{display:inline-flex}.top{padding:0 15px;height:61px}.top small{display:none}.wrap{padding:18px 15px 44px}.hero{border-radius:15px;padding:23px 20px}.hero h1{font-size:27px}.card{padding:19px 17px}.homegrid,.glossgrid{grid-template-columns:1fr}.tools{width:100%}.seg{flex:1}.seg button{flex:1}.topact{gap:6px}.heading{align-items:start}}
+@media print{.side,.top,.hero,.tools,.pager,.sources,.footnotes{display:none!important}.app{display:block}.wrap{padding:0}.cols{grid-template-columns:1fr 1fr!important}.card.th,.card.en{display:block!important}.card{box-shadow:none;break-inside:avoid}}
+</style></head>
+<body><div class="app"><aside class="side" id="side"><div class="logo"><span class="mark">✦</span><span><strong>SGO4 IF</strong><small>THAI FIELD GUIDE</small></span></div><input id="search" class="search" placeholder="⌕ ค้นหาหัวข้อ / Essence..." aria-label="ค้นหาหัวข้อ"><div id="count" class="count"></div><nav id="nav"></nav><div class="sidenote">แปลเพื่อศึกษา ไม่ใช่เว็บทางการ<br><a href="https://www.loverslab.com/topic/195326-soulgem-oven-4-integration-fork/" target="_blank" rel="noopener noreferrer">ไปยังต้นฉบับ SGO4 IF ↗</a></div></aside><div id="shade" class="shade"></div>
+<div class="mainarea"><header class="top"><div style="display:flex;align-items:center;gap:10px"><button id="mobileMenu" class="btn square mobileMenu" aria-label="เปิดสารบัญ">☰</button><div><small>THE ELDER SCROLLS V · SKYRIM</small><strong>SGO4 Integration Fork / English–Thai</strong></div></div><div class="topact"><button id="openGloss" class="btn">📖 คำศัพท์</button><button id="theme" class="btn square" title="เปลี่ยนธีม">☾</button></div></header><main class="wrap"><section class="hero"><div class="overline">Unofficial Thai Translation · คู่มือไม่เป็นทางการ</div><h1>อ่าน SGO4 IF<br>เป็นภาษาไทยได้ง่ายขึ้น</h1><p>รวมคำแปลไทยพร้อมต้นฉบับอังกฤษที่เธอส่งมา มีสารบัญ ค้นหาคำศัพท์ และสลับมุมมองเพื่อใช้เทียบตอนเล่น Skyrim</p><div class="tags"><span id="total">— หัวข้อ</span><span>ไทย ↔ English</span><span>ค้นหาได้</span><span>ใช้งานออฟไลน์</span></div></section>
+<section id="home"><div class="heading"><div><div class="eyebrow">เริ่มอ่าน</div><h2>เลือกหมวดที่สนใจ</h2><div class="subtitle">เรียงเนื้อหาตามระบบการเล่นของ SGO4 Integration Fork</div></div></div><div class="homegrid" id="homegrid"></div><div class="disclaimer">เว็บไซต์นี้เป็นคู่มือแปลจากข้อความที่ส่งมา ไม่ใช่ไฟล์แปล MCM สำหรับติดตั้งในเกม และยังไม่ครอบคลุมทุกบทของ SGO4 IF</div></section>
+<section id="reader" class="hide"><div class="heading"><div><div class="eyebrow" id="category"></div><h2 id="title"></h2><div class="subtitle" id="subtitle"></div></div><div class="tools"><div class="seg" role="group" aria-label="เลือกภาษา"><button data-mode="th">ภาษาไทย</button><button data-mode="split">สองภาษา</button><button data-mode="en">English</button></div><button id="copy" class="btn">⧉ คัดลอก</button></div></div><div class="note hide" id="chapterNote"></div><div id="cols" class="cols th"><article class="card th"><div class="card-header"><span>🇹🇭 TH · คำแปลไทย</span><i>Translated</i></div><div class="text" id="thText"></div></article><article class="card en" lang="en"><div class="card-header"><span>🇬🇧 EN · ต้นฉบับอังกฤษ</span><i>Source</i></div><div class="text" id="enText"></div></article></div><div class="footnotes" id="footnote"></div><div class="pager"><button class="btn" id="prev">← ก่อนหน้า</button><button class="btn primary" id="next">ถัดไป →</button></div></section>
+<footer class="sources">อ้างอิงเนื้อหาจากข้อความต้นฉบับอังกฤษที่ผู้ใช้ส่งในบทสนทนา และภาคผนวกจาก README WombTat 1.14d ที่แนบมา · <a href="https://www.loverslab.com/topic/195326-soulgem-oven-4-integration-fork/" target="_blank" rel="noopener noreferrer">หน้าม็อดต้นฉบับ</a> · ชื่อไอเทมและพาธไฟล์คงรูปภาษาอังกฤษเพื่อให้ค้นหาในเกมได้</footer></main></div></div>
+<div class="modalshade" id="modalshade"><div class="modal" role="dialog" aria-modal="true" aria-label="คำศัพท์ SGO4"><div class="modalheader"><div><div class="eyebrow">GLOSSARY</div><h2>คำศัพท์ที่พบบ่อย</h2></div><button class="btn" id="closeGloss" aria-label="ปิด">✕</button></div><input class="search" id="gsearch" aria-label="ค้นหาคำศัพท์" placeholder="ค้นหาคำศัพท์ไทย / English..." style="margin-top:16px"><div id="glossgrid" class="glossgrid"></div></div></div>
+<script type="application/json" id="data">{
+  "sections": [
+    {
+      "group": "เริ่มต้น",
+      "id": "getting-started",
+      "th_title": "เริ่มต้นใช้งาน",
+      "en_title": "Getting started",
+      "th": "วิธีหลักในการเริ่มใช้งานม็อดคือใช้ **Essences of Corruption (แก่นพลังแห่งการแปดเปื้อน)** ซึ่งเป็นไอเทมแบบใช้แล้วหมดไปที่เปลี่ยนคุณสมบัติของตัวละครได้หลายอย่าง\n\nหา Essence ได้จากศัตรูธีมพลังมืด เช่น **Vampires, Warlocks, Gargoyles, Daedra และ Falmer** หรืออาจซื้อได้จากพ่อค้าที่เกี่ยวข้องกับเวทมนตร์บางราย\n\nตัวละครเผ่าที่เล่นได้ทุกเผ่า (กลุ่ม Humanoid) สามารถได้รับ Essence ผ่าน **ADMP** ได้ด้วย",
+      "en": "The main way of getting started with this mod involves [Essences of corruption]. These are consumable items that modify the actor in various ways.\n\nYou can find a multitude of different essences from \"Evil\" Themed npcs (Vampires, Warlocks, Gargoyles, Daedra, Falmer), You might also find them at some \"Magic\" themed vendors.\n\nAny playable race (that means \"humanoid\" races) can consume these \"Essences\" using ADMP",
+      "keywords": "essence corruption ADMP vampire warlock vendor",
+      "note": ""
+    },
+    {
+      "group": "ระบบพื้นฐาน",
+      "id": "scaling",
+      "th_title": "การปรับขนาดร่างกาย",
+      "en_title": "Scaling",
+      "th": "ม็อดรองรับทั้ง **Bone Scaling** (ปรับผ่านกระดูก) และ **Morph Scaling** (ปรับผ่าน Morph) โดยผู้สร้างแนะนำ **Morph** สำหรับทุกส่วน ยกเว้นการปรับ Schlong\n\nค่า Morph/Bone ที่ตั้งใน MCM ถือเป็น **ขนาดพื้นฐาน 1× หรือ 100%** ก่อนใช้ตัวปรับเพิ่มเติม (Modifiers) บาง Essence รวมถึง Level ของ Milk, Gem และ Semen อาจทำให้ขนาดเพิ่มมากกว่าค่าที่ตั้งไว้\n\nตัวคูณ (Multiplier) และค่าบวก (Additive) จะคำนวณจากฐาน 100% นี้เสมอ\n\n**ข้อยกเว้น — Semen Morph:** เริ่มต้นด้วยเพดาน 0% และเพิ่มตาม Semen Level และตัวคูณความจุ เมื่อ Capacity Multiplier เท่ากับ 100% ระบบจะใช้ Semen Morph 100% คูณกับปริมาณ Semen ปัจจุบัน",
+      "en": "The mod has support for both bone and morph scaling (morph is recommended for everything except schlong scaling)\n\nIn this case, the Morph/Bone sliders you input in the MCM count as 1X scaling, Certain \"Essences\" and Milk/Gem/Semen leveling can alter these scalings much further.\nThese sliders are your baseline max scaling without any modifiers.\nJust remember that any multiplier or additive is based on this 100% base.\n\nThe only exception is semen morphs, which have a starting cap of 0%, increasing with semen levels and semen capacity multipliers. While at 100% capacity multiplier, you will get 100% of semen morphs multiplied by current semen amount.",
+      "keywords": "bone morph scaling MCM multiplier additive",
+      "note": ""
+    },
+    {
+      "group": "ระบบพื้นฐาน",
+      "id": "leveling",
+      "th_title": "การพัฒนาเลเวล",
+      "en_title": "Leveling",
+      "th": "เมื่อใช้ระบบต่าง ๆ ของม็อด เกมจะติดตามสถิติการใช้งาน **แยกตามตัวละคร** เพื่อให้ EXP ที่เกี่ยวข้อง เมื่อ EXP เพียงพอ ตัวละครจะเพิ่ม Level ในทักษะนั้น\n\nมีเลเวล **3 ประเภท** ได้แก่ **Milk**, **Gem (Pregnancy)** และ **Semen** โดยแต่ละเลเวลจะเพิ่มค่าสถานะที่เกี่ยวข้องอย่างค่อยเป็นค่อยไป\n\nเพดานเลเวลเริ่มต้นคือ **100** และเมื่อได้ **Full Corruption** จะเพิ่มเพดานได้อีก **100** (รวมเป็น 200)",
+      "en": "While you engage with this mods mechanics, usage stats will be tracked on a per actor basis and award experience in related areas, With enough experience you will gain a \"Level\" in specic \"Skill\".\n\nThere are 3 different kinds of \"Levels\" you can gain.\nMilk, Gem(pregnancy) and Semen Levels, Each level will gradually \"improve\" stats related to said skill.\n\nBy default the level cap is 100, with an additional 100 being added from full corruption.",
+      "keywords": "milk gem semen exp level cap 100 200",
+      "note": ""
+    },
+    {
+      "group": "ระบบพื้นฐาน",
+      "id": "corruption",
+      "th_title": "Corruption และการเพิ่มเลเวล",
+      "en_title": "Corruption",
+      "th": "**Corruption** คือการเพิ่ม Modifier ให้ตัวละคร โดยทั่วไปผ่าน **Essence of Corruption**\n\nถ้าตัวละครยังไม่มี Corruption ชนิดนั้น จะได้รับ Modifier นั้นเมื่อใช้ Essence แต่ถ้ามีอยู่แล้ว การใช้ซ้ำจะเพิ่ม **Corruption Experience** แทน\n\nCorruption EXP ช่วยเพิ่มเลเวลเหนือเพดานพื้นฐาน หรือเร่งเลเวลตัวละครด้วย Essence ส่วนเกินได้ **Normal Level และ Corruption Level ไม่มีความแตกต่างในการคำนวณผลลัพธ์** เพราะเกมนำทั้งคู่มารวมเป็น Final Level\n\nหา Essence ได้จากศัตรูธีมพลังมืด เช่น Vampire, Warlock, Gargoyle, Daedra, Falmer และพ่อค้าสายเวทมนตร์บางราย",
+      "en": "Corruption is the act of adding a modifier to an actor, Usually from [Essences of corruption], If an actor already has said corruption, the actor will instead gain corruption experience.\n\nCorruption experience works as an additional level modifier, allowing you exceed the base level cap, and speedlevel chosen actors if you have an excess of Essences.\nThere is no functional difference between normal levels and corruption levels. Both are tallied together and used for the final \"level\"\n\nCorruptions essences can be found on \"Evil\" Themed npcs (Vampires, Warlocks, Gargoyles, Daedra, Falmer), You might also find them at some \"Magic\" themed vendors.",
+      "keywords": "corruption exp skill levels",
+      "note": ""
+    },
+    {
+      "group": "ระบบพื้นฐาน",
+      "id": "purification",
+      "th_title": "Purification — การชำระล้าง",
+      "en_title": "Purification",
+      "th": "**Purification** คือการลบ Modifier ออกจากตัวละคร มักทำผ่าน **Essence of Purification** ซึ่งทำงานในทางตรงข้ามกับ Essence of Corruption\n\n**ระวัง:** หากใช้ Essence of Purification มากเกินไป อาจหักล้างความก้าวหน้าที่สะสมจาก Base Leveling ด้วย\n\nEssence of Purification หาได้จาก **เครื่องจักร Dwemer**",
+      "en": "Purification is the act of removing a modifier from an actor, Usually from [Essences of purification] (which can be found from dwemer enemies) Essentially the same as [Essences of corruption], but does the opposite.\n\nConsuming excess of [Essences of purification] will offset any progress from base leveling.\nPurification essences can be found on Dwemer machines.",
+      "keywords": "dwemer purification remove modifier",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "pregnancy-unlock",
+      "th_title": "เปิดระบบตั้งครรภ์",
+      "en_title": "Incubation / Pregnancy",
+      "th": "ก่อนตัวละครจะใช้ระบบ **Incubation/Pregnancy** ได้ ต้องใช้ไอเทม **`Essence Of Corruption: Soulgem Oven`** เพื่อปลดล็อกระบบนั้นก่อน",
+      "en": "To enable Incubation/Pregnancy, actor has to consume [Essence Of Corruption: Soulgem Oven]",
+      "keywords": "gem essence unlock pregnancy",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "insemination",
+      "th_title": "เริ่มตั้งครรภ์อย่างไร",
+      "en_title": "Insemination",
+      "th": "ตัวละครตั้งครรภ์ได้จาก **แอนิเมชัน SexLab โดยตรง** หรือจากการอยู่ในสภาวะ **Inflation** นานเกินไป คู่ฝ่ายชาย **ไม่จำเป็นต้องเปิดระบบ Semen Production** จึงจะทำให้เกิดการตั้งครรภ์ได้\n\nแต่ละเผ่าสามารถกำหนดผลผลิตจากการบ่มต่างกัน โดยตั้งค่าผ่าน **`configs\\dse-soulgem-oven\\outputs`**\n\nอีกวิธีคือบังคับให้เริ่มการตั้งครรภ์ด้วยการใส่ **Soul Gem เปล่า** หรือ **Soul Gem Shard** ซึ่งจะอัปเกรดไปเป็น Gem เปล่าระดับถัดไป ระบบนี้กำหนดไว้ในโค้ดและใช้ได้กับ **Soul Gem แบบ Vanilla** เท่านั้น",
+      "en": "Actors can become pregnant either directly from sexlab animation, or by staying inflated for too long, \"Male\" partner does NOT need to have semen production enabled to inseminate actors.\n\nEvery unique race can have a specific incubation output. (See configs\\dse-soulgem-oven\\outputs)\nYou can also force a pregnancy by inserting unfilled soulgems or soulgem shards (this will upgrade said gems to the next unfilled tier, hardcoded and will only work with vanilla soulgems)",
+      "keywords": "sexlab soulgem unfilled shards forced pregnancy",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "output-map",
+      "th_title": "เกมเลือกผลผลิตและจำนวนอย่างไร",
+      "en_title": "Race IDs and Output Map",
+      "th": "เมื่อเกิด Insemination ระบบจะตรวจ **เผ่าของฝ่ายพ่อ** เทียบกับรายการ Race ID ที่ตั้งค่าได้ใน **`configs\\dse-soulgem-oven\\raceids`** แล้วจับคู่กับ **Output Map**\n\nOutput Map จะกำหนดว่าได้ผลผลิตชนิดใดและมีช่วงจำนวนต่ำสุด–สูงสุดเท่าไร เกมจะสุ่มจำนวนภายในช่วงนั้น และ **เก็บผลลัพธ์ (Cache) ไว้กับตัวละครที่ตั้งครรภ์**",
+      "en": "On insemination, \"What\" and \"How many\" is decided by checking the \"Father\"'s race towards an configurable id list (see: configs\\dse-soulgem-oven\\raceids)\nThis raceid is then matched to a outputmap.\nThe output is cached to the actor, And the amount is randomized between the minimum and maximum amount dictated by the outputmap.",
+      "keywords": "raceids outputs min max father race cache",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "pregnancy-effects",
+      "th_title": "ผลกระทบระหว่างตั้งครรภ์",
+      "en_title": "Pregnancy effects",
+      "th": "ระหว่างตั้งครรภ์หรืออยู่ในสภาวะ Inflation **ความเร็วการเดินของตัวละครจะลดลง** แต่สามารถลบผลนี้ได้ด้วย Enchantment ที่พบใน **Apocrypha**\n\nการตั้งครรภ์แต่ละประเภทอาจเปลี่ยน **ชนิดน้ำนมที่ผลิต**, เพิ่ม **เวทมนตร์เฉพาะ**, และใช้ **Morph ของร่างกายคนละชุด** ได้ โดยกำหนดแยกใน **`configs\\dse-soulgem-oven\\outputs`**",
+      "en": "While pregnant or inflated, actors movement speed will be reduced, This can be nullified with an enchantment that can be found in apocrypha.\nPregnancy may also override what kind of milk an actor produces on a incubation type basis. (See configs\\dse-soulgem-oven\\outputs)\nPregnancy can also apply a custom magic spell on a per incubation type basis. (See configs\\dse-soulgem-oven\\outputs)\nDifferent kinds of pregnancies can have different morphs applied. (See configs\\dse-soulgem-oven\\outputs)",
+      "keywords": "movement speed apocrypha milk morph custom spell",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "inflation",
+      "th_title": "Inflation — การขยายตัวชั่วคราว",
+      "en_title": "Inflation",
+      "th": "เมื่อฝ่ายชายถึงจุดสุดยอดในฉาก SexLab ตัวละครที่ได้รับผลสามารถเข้าสู่สภาวะ **Inflation** ได้ สูงสุดตาม Soft Cap ที่กำหนด และเพดานนี้เพิ่มได้จาก Gem Level\n\nระหว่าง Inflation ปริมาณส่วนใหญ่จะค่อย ๆ รั่วออก ขณะที่ส่วนเล็ก ๆ ถูกดูดซึมเป็น **Scaling Weight ชั่วคราว** ทุก ๆ **1 ชั่วโมงในเกม** ที่อยู่ในสภาวะนี้ เกมจะสุ่มโอกาสตั้งครรภ์ใหม่ **ปริมาณ Inflation ที่มากขึ้นไม่ได้เพิ่มโอกาสจากการสุ่มรายชั่วโมงโดยตรง** แต่ Modifier อื่นยังมีผล\n\nInflation ใช้ Morph เดียวกับ Pregnancy MCM ดังนั้นค่ารูปร่างปัจจุบันจึงเป็นผลจาก **Inflation + Pregnancy** หากเริ่มตั้งครรภ์แล้ว Pregnancy จะเข้าแทนที่และทำให้ Inflation ลดลงเร็วกว่าปกติ",
+      "en": "Sexlab scene \"male\" orgasms will also inflate actors, up to a configurable softcap which can be further increased through gem levels.\nWhile inflated, a large amount of cum will leak out, and a smaller amount will be absorbed and converted into temporary \"scaling\" weight.\nEvery hour spent inflated rolls a dice for potential pregnancy, higher inflation amounts do NOT increase the chance, all other modifiers will affect this chance.\nInflation uses the same morphs as those added in the pregnancy mcm, your current scaling will therefore be Inflation + pregnancy.\nIf an actor becomes pregnant, Pregnancy will \"displace\" inflation, and force deflation faster than normal.",
+      "keywords": "softcap hourly chance leak absorption scaling",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "weight",
+      "th_title": "Weight และ Nutrients",
+      "en_title": "Weight",
+      "th": "ค่า **Weight ของ SGO4 ไม่ใช่ RaceMenu Weight 0.0–1.0** แต่เป็นระบบที่อ้างอิง Morph ในแท็บ Weight ของ MCM\n\nWeight ถูกใช้เป็น **เชื้อเพลิง (Fuel)** เพื่อเร่งการบ่ม ได้จากฉาก SexLab แบบ Oral, การดูดซึม Inflation หรือการใช้ **Nutrients** ซึ่งคราฟต์ที่หม้อทำอาหารจาก **Glowing Mushrooms + Chaurus Eggs**\n\nFuel Weight จะขึ้นลงและลดไปตามเวลา ทั้ง Weight ที่ใช้เป็น Fuel/Scaling และ **Lingering Weight** จาก Gem Level ยังช่วยเพิ่ม Fertility ด้วย",
+      "en": "THIS IS NOT RACEMENU 0.0-1.0 WEIGHT. this is based on the morphs you input in the weights tab.\nWeight is used as \"Fuel\" to speed up incubation, and can be gained from oral sexlab scenes, absorbing inflation, or consuming \"Nutrients\"\n\"Nutrients\" can be crafted using Glowing Mushrooms and Chausus Eggs at a cooking pot.\n\"Fuel\" Weight will fluctuate and drain over time.\nWeight will also increase fertility, (this includes both \"Fuel/Scaling\" weight and \"lingering\" weight from gem leveling.)",
+      "keywords": "nutrients glowing mushrooms chaurus eggs cooking pot",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "birth",
+      "th_title": "คลอดและสกัดผลผลิต",
+      "en_title": "Birthing / Extraction",
+      "th": "เมื่อตัวละครบ่มผลผลิตจน **Growth เสร็จสมบูรณ์** ให้เล็งเป้าหมายที่ตัวละคร เปิด **Powers Menu** แล้วเลือก **Birth** เพื่อคลอดหรือสกัดผลผลิตออกมา\n\nตัวละครอาจคลอดผลผลิตในระหว่างจุดสุดยอดได้ และหากปล่อยไว้นานเกินไป อาจเกิดเหตุการณ์ **น้ำคร่ำแตก (Water Breaking)** เริ่มนับถอยหลังสู่การคลอดแบบบังคับ จึงควรหาสถานที่ปลอดภัยก่อนถึงเวลา",
+      "en": "To birth/extract whatever an actor is incubating, target them with the powers menu and select birth, this requires that growth is \"done\"\nActors might also birth items when orgasming.\nIf you wait too long to birth an item, an actor's water might break, which starts a countown towards a forced birthing event, time to get to a safe spot.",
+      "keywords": "powers menu birth growth ready water break",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "gem-level",
+      "th_title": "Gem Level เพิ่มอะไรบ้าง",
+      "en_title": "Gem Leveling Effects",
+      "th": "การเพิ่ม **Gem Level** จะทำให้ **การบ่มเร็วขึ้น**, เพิ่ม **จำนวนผลผลิตสูงสุดที่สุ่มได้**, เพิ่ม **ความจุ Inflation**, เพิ่ม **Base Weight** และเพิ่ม **Maximum Scaling Weight**",
+      "en": "Gem levels will result in a number of changes for the affected actor.\nFaster growth rate.\nHigher max roll on quantity.\nIncreased inflation capacity.\nIncreased base weight.\nIncreased maximum scaling weight.",
+      "keywords": "growth output capacity gem level",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "gem-corruptions",
+      "th_title": "Essence สำหรับสาย Gem",
+      "en_title": "Gem Related Corruptions",
+      "th": "**`Soulgem Oven`** — เปิดการบ่ม การตั้งครรภ์ และการเพิ่ม Weight\n\n**`Altered Ovaries`** — คูณโบนัสเพิ่มจำนวนผลผลิตสูงสุดจาก Gem Level\n\n**`Broodmother`** — คูณโบนัสเพิ่ม Weight สูงสุดจาก Gem Level\n\n**`Cumdump`** — คูณโบนัสเพิ่มความจุ Inflation จาก Gem Level\n\n**`Fecund Fauces`** — อนุญาตให้เกิด Inflation/Pregnancy จากแอนิเมชัน Oral\n\n**`Fertile Backrooms`** — อนุญาตให้เกิด Inflation/Pregnancy จากแอนิเมชัน Anal\n\n**`Terminal Thickness`** — คูณโบนัส Base Weight จาก Gem Level\n\n**`VoraciousWomb`** — เพิ่มอัตราการดูดซึม Inflation อย่างมาก\n\n**`Womb Tattoo`** — เพิ่มรอยสักบริเวณหน้าท้อง ซึ่งเรืองแสงเมื่ออยู่ช่วงตกไข่ หรือพร้อมคลอด",
+      "en": "Essence Of Corruption: Soulgem Oven, Enables incubation, Pregnancy and weight gain.\nEssence Of Corruption: Altered Ovaries, Multiplies the maximum output increase from gem leveling.\nEssence Of Corruption: Broodmother, Multiplies the maximum weight gain increase from gem leveling.\nEssence Of Corruption: Cumdump, Multiplies the inflation capacity increase from gem leveling.\nEssence Of Corruption: Fecund Fauces, Allows inflation/pregnancy from oral animations.\nEssence Of Corruption: Fertile Backrooms, Allows inflation/pregnancy from anal animations.\nEssence Of Corruption: Terminal Thickness, Multiplies base weight increase from gem leveling.\nEssence Of Corruption: VoraciousWomb, Drastically increases inflation absorbtion rate.\nEssence Of Corruption: Womb Tattoo, Applies a womb tattoo, Glows when ovulating or when ready to birth.",
+      "keywords": "essence womb tattoo altered ovaries broodmother voraciouswomb",
+      "note": ""
+    },
+    {
+      "group": "ตั้งครรภ์และ Gem",
+      "id": "dd-compatibility",
+      "th_title": "การทำงานร่วมกับ DD",
+      "en_title": "DD Compatibility",
+      "th": "ถ้าตัวละครสวม **Vaginal DD Plug** (อุปกรณ์จาก Devious Devices) ระบบจะ **ป้องกันการรั่วไหลจาก Inflation** และ **ป้องกันการคลอด** ทั้งแบบที่ผู้เล่นเลือกเอง แบบสุ่ม และแบบเกิดจากจุดสุดยอด",
+      "en": "Wearing a vaginal DD plug will prevent inflation leakage, and prevent birthing (Chosen, Random and orgasm based)",
+      "keywords": "devious devices DD plug leakage birth",
+      "note": ""
+    },
+    {
+      "group": "ระบบ Semen",
+      "id": "semen-unlock",
+      "th_title": "เปิดระบบ Semen Production",
+      "en_title": "Semen Production",
+      "th": "ตัวละครต้องใช้ **`Essence Of Corruption: Stallion`** เพื่อเปิดระบบ **Semen Production**\n\n**ไม่จำเป็นต้องเปิด Semen Production เพื่อทำให้ตัวละครอื่นตั้งครรภ์** แต่ต้องเปิดก่อนจึงจะสะสม **Semen Level** ได้",
+      "en": "To enable Semen production, actor has to consume [Essence Of Corruption: Stallion]\nActors do [NOT] have to have semen production enabled to impregnate other actors.\nBut if you want actors to be able to gain semen levels you will need to enable semen production.",
+      "keywords": "stallion semen production level",
+      "note": ""
+    },
+    {
+      "group": "ระบบ Semen",
+      "id": "load-size",
+      "th_title": "Load Size และความจุ",
+      "en_title": "Load Size",
+      "th": "**Load Size** ที่สูงขึ้นจะเพิ่ม **โอกาสตั้งครรภ์** และ **ปริมาณ Inflation**\n\nสำหรับตัวละครที่ไม่ใช่ Stallion ค่า Base Load Size จะกำหนดตามเผ่าใน **`configs\\dse-soulgem-oven\\outputs`**\n\nตัวละครที่เป็น Stallion หรือผู้ผลิต Semen จะเริ่มต้นด้วย **Load Size = 10** และ **Capacity = 10** ซึ่งค่อย ๆ เพิ่มขึ้นตาม Semen Level",
+      "en": "Larger load sizes increase pregnancy chance and inflation amount, base loadsize is set on a race basis for non \"Stallions\" (See configs\\dse-soulgem-oven\\outputs)\nStallions/Semen producers start at 10 load size and capacity, which gradually increases with semen levels.",
+      "keywords": "load size capacity pregnancy chance inflation",
+      "note": ""
+    },
+    {
+      "group": "ระบบ Semen",
+      "id": "semen-level",
+      "th_title": "Semen Level เพิ่มอะไรบ้าง",
+      "en_title": "Semen Leveling Effects",
+      "th": "การเพิ่ม Semen Level จะทำให้ **Schlong ใหญ่ขึ้น**, **ขนาดอัณฑะสูงสุดเพิ่มขึ้น** (ปรับตามปริมาณ Semen ที่มีขณะนั้น), **ความจุ Semen เพิ่มขึ้น**, **Load Size เพิ่มขึ้น** และ **ฟื้นฟู Semen ได้เร็วขึ้น**",
+      "en": "Semen levels will result in a number of changes for the affected actor.\nLarger Schlong.\nLarger max ball size. (scales with current semen amount)\nLarger semen capacity.\nLarger load size.\nFaster semen recoup.",
+      "keywords": "schlong capacity recovery size",
+      "note": ""
+    },
+    {
+      "group": "ระบบ Semen",
+      "id": "semen-corruptions",
+      "th_title": "Essence สำหรับสาย Semen",
+      "en_title": "Semen Related Corruptions",
+      "th": "**`Stallion`** — เปิด Semen Production และ Semen Leveling\n\n**`Transmuted Testicles`** — คูณโบนัสที่เพิ่ม **Load Size และ Capacity** จากการพัฒนา Semen Level",
+      "en": "Essence Of Corruption: Stallion, Enables semen production and semen leveling.\nEssence Of Corruption: Transmuted Testicles, multiplies load size and capacity increase from semen leveling.",
+      "keywords": "transmuted testicles stallion",
+      "note": ""
+    },
+    {
+      "group": "ภาคผนวก",
+      "id": "wombtat-patch",
+      "th_title": "ภาคผนวก: WombTat Patch 1.14d",
+      "en_title": "WombTat Patch 1.14d (Thai notes)",
+      "th": "ส่วนนี้ **สรุปจาก README ภาษาเกาหลีที่เธออัปโหลด** ไม่ใช่ข้อความภาษาอังกฤษจากคู่มือ IF\n\nPatch นี้เพิ่มการเลือก **Gradient 4 แบบ**: `Original (Tex_Flat)` สีสม่ำเสมอ, `Wide (Tex_Wide)` ไล่สีแบบกว้าง, `Narrow (Tex_Narrow)` ไล่สีแบบแคบ และ `3-Step (Tex_3Step)` เข้มขึ้นด้านนอก\n\nเลือก **Glow 2 แบบ**: `Tattoo Only` แสงอยู่บนลาย และ `Soft Spread` แสงกระจายรอบลาย รวมเป็น **8 รูปแบบ**\n\nSGO4 มี Slot รอยสัก 1–8 แต่ละครั้งสุ่ม Slot ที่ใช้ ไฟล์จากคลัง 68 ดีไซน์ต้องเลือกและคัดลอกลง Slot โดยตั้งชื่อ `WombTex1~8.dds` และ `WombShine1~8.dds` ให้ลายหลักกับแสงตรงกัน\n\n**คำเตือน:** Patch 1.14d สร้างจากสคริปต์ฐาน 1.12 และ README ระบุว่ายังไม่ได้ทดสอบในเกมจริง และหมายเลข 01–52 จากคลังอนุญาตให้ใช้ส่วนตัว ไม่ให้แจกจ่ายต่อ",
+      "en": "This appendix is a Thai summary of the Korean README uploaded with the WombTat Patch 1.14d, not an English source excerpt from Integration Fork.",
+      "keywords": "tattoo style shine glow flat wide narrow 3step patch",
+      "note": "ภาคผนวกจาก README ที่ผู้ใช้อัปโหลด (ภาษาเกาหลี)"
+    },
+    {
+      "group": "ภาคผนวก",
+      "id": "missing-topics",
+      "th_title": "หัวข้อที่ยังไม่มีต้นฉบับ",
+      "en_title": "Pending English excerpts",
+      "th": "เว็บไซต์เวอร์ชันนี้ครอบคลุมข้อความภาษาอังกฤษที่เธอส่งมา: **Getting started, Scaling, Leveling, Corruption, Purification, Pregnancy/Incubation, Inflation, Weight, Gem และ Semen** พร้อมภาคผนวก WombTat จาก README\n\n**ยังไม่ได้แปลครบทุกบทของ SGO4 Integration Fork** โดยเฉพาะ **Milk / Lactacid / Startup / MCM แบบละเอียด / Enchantments** เพราะยังไม่ได้รับข้อความต้นฉบับภาษาอังกฤษของส่วนเหล่านั้นมาในแชตนี้\n\nเมื่อได้ข้อความต้นฉบับเพิ่มเติม สามารถเพิ่มคู่ภาษาอังกฤษ–ไทยลงเว็บไซต์ได้โดยไม่ต้องเปลี่ยนโครงสร้างหน้าเว็บ",
+      "en": "The current website covers the English sections supplied in the conversation, plus a Thai appendix from the uploaded WombTat README. Chapters without supplied English excerpts are intentionally marked pending rather than reconstructed as supposed quotations.",
+      "keywords": "pending milk lactacid startup mcm enchantments",
+      "note": "แจ้งขอบเขตของเนื้อหา"
+    }
+  ],
+  "glossary": [
+    [
+      "Actor",
+      "ตัวละครที่ระบบกำลังจัดการ"
+    ],
+    [
+      "Essence of Corruption",
+      "แก่นพลังที่เพิ่มคุณสมบัติ/Corruption"
+    ],
+    [
+      "Essence of Purification",
+      "แก่นพลังสำหรับลบ Modifier"
+    ],
+    [
+      "MCM",
+      "เมนูตั้งค่าม็อดภายในเกม"
+    ],
+    [
+      "Bone Scaling",
+      "การเปลี่ยนขนาดผ่านกระดูกตัวละคร"
+    ],
+    [
+      "Morph Scaling",
+      "การปรับรูปร่างผ่าน Morph"
+    ],
+    [
+      "Modifier",
+      "ค่าที่ใช้เพิ่ม ลด หรือคูณคุณสมบัติ"
+    ],
+    [
+      "Incubation",
+      "กระบวนการบ่มผลผลิต"
+    ],
+    [
+      "Insemination",
+      "เหตุการณ์เริ่มกระบวนการตั้งครรภ์"
+    ],
+    [
+      "Inflation",
+      "สถานะขยายตัวชั่วคราว"
+    ],
+    [
+      "Soft Cap",
+      "เพดานที่เพิ่มได้ตามเงื่อนไข"
+    ],
+    [
+      "Output Map",
+      "ชุดกฎระบุชนิดและจำนวนผลผลิต"
+    ],
+    [
+      "Fuel Weight",
+      "น้ำหนักสะสมที่ใช้เร่งการบ่ม"
+    ],
+    [
+      "Lingering Weight",
+      "น้ำหนักที่คงเหลือจากความก้าวหน้าของ Gem"
+    ],
+    [
+      "Birthing",
+      "การคลอดหรือผลิตไอเทมออกมา"
+    ],
+    [
+      "Corruption EXP",
+      "ค่าประสบการณ์จาก Essence ซ้ำ"
+    ],
+    [
+      "Milk Level",
+      "เลเวลของระบบน้ำนม"
+    ],
+    [
+      "Gem Level",
+      "เลเวลของระบบบ่ม/ตั้งครรภ์"
+    ],
+    [
+      "Semen Level",
+      "เลเวลของระบบน้ำเชื้อ"
+    ],
+    [
+      "Womb Tattoo",
+      "รอยสักเวทมนตร์บริเวณหน้าท้อง"
+    ],
+    [
+      "ADMP",
+      "ระบบที่ใช้ให้ตัวละครบริโภค Essence (ชื่อเต็มไม่ได้ระบุในข้อความที่ให้มา)"
+    ],
+    [
+      "DD",
+      "Devious Devices"
+    ],
+    [
+      "Glow",
+      "การเรืองแสง"
+    ],
+    [
+      "Race ID",
+      "รหัสเผ่าที่ใช้จับคู่กับกฎ"
+    ],
+    [
+      "Vanilla",
+      "เนื้อหาจากเกมต้นฉบับ"
+    ]
+  ]
+}</script><script>
+(()=>{'use strict';const d=JSON.parse(document.getElementById('data').textContent),S=d.sections,G=d.glossary,$=x=>document.getElementById(x),icons={'เริ่มต้น':'✦','ระบบพื้นฐาน':'◈','ตั้งครรภ์และ Gem':'◇','ระบบ Semen':'◎','ภาคผนวก':'▤'};let current=null,mode='th',filter='';try{mode=localStorage.getItem('sgo4-view')||'th';document.documentElement.dataset.theme=localStorage.getItem('sgo4-theme')||'light'}catch(e){}if(!['th','en','split'].includes(mode))mode='th';$('total').textContent=S.length+' หัวข้อ';const esc=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');const format=x=>x.split(/\n\s*\n/).filter(Boolean).map(t=>'<p>'+esc(t).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')+'</p>').join('');
+function nav(){const q=filter.trim().toLocaleLowerCase();const found=S.map((s,i)=>({...s,num:i+1})).filter(s=>!q||[s.th_title,s.en_title,s.th,s.en,s.keywords,s.group].join(' ').toLocaleLowerCase().includes(q));$('count').textContent=q?`ผลการค้นหา ${found.length}/${S.length}`:`คู่มือ ${S.length} หัวข้อ`;let v=`<button class="navbtn ${current?'':'active'}" data-go="home"><span class="n">⌂</span>หน้าแรก / ภาพรวม</button>`;for(let g of [...new Set(S.map(s=>s.group))]){const list=found.filter(s=>s.group===g);if(!list.length)continue;v+=`<div class="group"><div class="groupname">${esc(icons[g]+' '+g)}</div>`;for(let s of list)v+=`<button class="navbtn ${current===s.id?'active':''}" data-go="${s.id}"><span class="n">${String(s.num).padStart(2,'0')}</span>${esc(s.th_title)}</button>`;v+='</div>'}if(!found.length)v+='<div class="missing">ไม่พบหัวข้อที่ค้นหา</div>';$('nav').innerHTML=v}
+function homegrid(){let a=[...new Set(S.map(s=>s.group))];$('homegrid').innerHTML=a.map(g=>{let b=S.filter(s=>s.group===g);return `<button class="hometile" data-go="${b[0].id}"><strong><span style="color:var(--accent)">${icons[g]}</span> ${esc(g)}</strong><p>${b.length} หัวข้อ · ${esc(b.slice(0,3).map(s=>s.th_title).join(' / '))}</p></button>`}).join('')}
+function view(){document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('selected',x.dataset.mode===mode));$('cols').className='cols '+mode}function closeSide(){$('side').classList.remove('open');$('shade').classList.remove('open')}
+function render(id,scroll=true){const s=S.find(x=>x.id===id);current=s?s.id:null;document.body.classList.toggle('reading',!!s);$('home').classList.toggle('hide',!!s);$('reader').classList.toggle('hide',!s);if(s){let i=S.indexOf(s);$('category').textContent=s.group+' · '+(i+1)+'/'+S.length;$('title').textContent=s.th_title;$('subtitle').textContent=s.en_title;$('thText').innerHTML=format(s.th);$('enText').innerHTML=format(s.en);$('chapterNote').textContent=s.note||'';$('chapterNote').classList.toggle('hide',!s.note);$('footnote').textContent=s.note?'หมายเหตุ: บทนี้เป็นข้อมูลประกอบ ไม่ใช่ต้นฉบับอังกฤษจากคู่มือหลัก':'อังกฤษจากข้อความที่เธอส่งมา · คงชื่อ Essence และพาธไฟล์เดิมไว้';$('prev').disabled=i===0;$('next').disabled=i===S.length-1;view()}nav();closeSide();if(scroll)window.scrollTo({top:0,behavior:'smooth'})}function go(id){history.pushState(null,'','#'+encodeURIComponent(id));render(id==='home'?null:id)}
+document.addEventListener('click',e=>{let t=e.target.closest('[data-go]');if(t)go(t.dataset.go)});$('search').addEventListener('input',e=>{filter=e.target.value;nav()});document.querySelectorAll('[data-mode]').forEach(x=>x.addEventListener('click',()=>{mode=x.dataset.mode;try{localStorage.setItem('sgo4-view',mode)}catch(e){}view()}));$('theme').addEventListener('click',()=>{let v=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=v;try{localStorage.setItem('sgo4-theme',v)}catch(e){}});$('mobileMenu').addEventListener('click',()=>{$('side').classList.add('open');$('shade').classList.add('open')});$('shade').addEventListener('click',closeSide);$('prev').addEventListener('click',()=>{let i=S.findIndex(s=>s.id===current);if(i>0)go(S[i-1].id)});$('next').addEventListener('click',()=>{let i=S.findIndex(s=>s.id===current);if(i>=0&&i<S.length-1)go(S[i+1].id)});
+$('copy').addEventListener('click',async()=>{let s=S.find(s=>s.id===current);if(!s)return;let val=mode==='en'?s.en:mode==='th'?s.th:`${s.th_title}\n\nไทย:\n${s.th}\n\nEnglish:\n${s.en}`;try{await navigator.clipboard.writeText(val)}catch(e){let x=document.createElement('textarea');x.value=val;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()}let b=$('copy');b.textContent='✓ คัดลอกแล้ว';setTimeout(()=>b.textContent='⧉ คัดลอก',1400)});
+function drawGloss(q=''){q=q.toLocaleLowerCase();let a=G.filter(x=>!q||x.join(' ').toLocaleLowerCase().includes(q));$('glossgrid').innerHTML=a.length?a.map(x=>`<div class="term"><b>${esc(x[0])}</b><p>${esc(x[1])}</p></div>`).join(''):'<div class="missing">ไม่พบคำศัพท์</div>'}function closeModal(){$('modalshade').classList.remove('show')}$('openGloss').addEventListener('click',()=>{$('modalshade').classList.add('show');drawGloss();$('gsearch').focus()});$('closeGloss').addEventListener('click',closeModal);$('modalshade').addEventListener('click',e=>{if(e.target===$('modalshade'))closeModal()});$('gsearch').addEventListener('input',e=>drawGloss(e.target.value));document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeSide()}if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();$('search').focus()}});window.addEventListener('popstate',()=>render(decodeURIComponent(location.hash.slice(1))));homegrid();render(decodeURIComponent(location.hash.slice(1)),false);
+})();</script></body></html>
